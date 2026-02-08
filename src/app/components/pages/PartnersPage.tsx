@@ -1,0 +1,296 @@
+import React from 'react';
+import { motion } from 'motion/react';
+import { Award, Shield, TrendingUp, Users, Star, CheckCircle2, ExternalLink } from 'lucide-react';
+
+const partners = [
+  {
+    name: 'Wells Fargo',
+    rating: 4.8,
+    minLoan: '$25,000',
+    maxLoan: '$500,000',
+    aprFrom: '6.99%',
+    features: ['No closing costs', 'Online account management', 'Relationship discounts'],
+    bestFor: 'Existing customers and large loan amounts',
+  },
+  {
+    name: 'Bank of America',
+    rating: 4.7,
+    minLoan: '$25,000',
+    maxLoan: '$500,000',
+    aprFrom: '7.25%',
+    features: ['Preferred Rewards discounts', 'Mobile app access', 'No annual fee'],
+    bestFor: 'Rewards program members',
+  },
+  {
+    name: 'Chase',
+    rating: 4.9,
+    minLoan: '$25,000',
+    maxLoan: '$500,000',
+    aprFrom: '7.15%',
+    features: ['Fast approval process', 'Premier banking benefits', 'Rate lock options'],
+    bestFor: 'Quick funding needs',
+  },
+  {
+    name: 'US Bank',
+    rating: 4.6,
+    minLoan: '$15,000',
+    maxLoan: '$750,000',
+    aprFrom: '7.40%',
+    features: ['Lower minimum loan', 'Flexible terms', 'Free financial planning'],
+    bestFor: 'Smaller loan amounts and financial guidance',
+  },
+  {
+    name: 'PNC Bank',
+    rating: 4.7,
+    minLoan: '$25,000',
+    maxLoan: '$500,000',
+    aprFrom: '7.30%',
+    features: ['Virtual wallet integration', 'No prepayment penalty', 'Customer support 24/7'],
+    bestFor: 'Digital-first experience',
+  },
+  {
+    name: 'Regions Bank',
+    rating: 4.5,
+    minLoan: '$10,000',
+    maxLoan: '$500,000',
+    aprFrom: '7.50%',
+    features: ['Lowest minimum loan', 'Regional expertise', 'Personalized service'],
+    bestFor: 'First-time HELOC borrowers',
+  },
+];
+
+const selectionCriteria = [
+  {
+    icon: Shield,
+    title: 'Financial Stability',
+    description: 'All partners are FDIC-insured institutions with strong financial ratings and decades of lending experience.',
+  },
+  {
+    icon: Star,
+    title: 'Customer Satisfaction',
+    description: 'We only work with lenders who maintain high customer satisfaction scores and positive reviews.',
+  },
+  {
+    icon: Award,
+    title: 'Competitive Rates',
+    description: 'Partners must offer market-competitive rates and transparent fee structures with no hidden costs.',
+  },
+  {
+    icon: Users,
+    title: 'Homeowner First',
+    description: 'Every partner shares our commitment to putting homeowners\' needs first and providing exceptional service.',
+  },
+];
+
+export function PartnersPage() {
+  return (
+    <div className="pt-20">
+      {/* Hero */}
+      <div className="bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-600 text-white py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h1
+            className="text-5xl sm:text-6xl mb-6"
+            style={{ fontWeight: 700 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Our Lending Partners
+          </motion.h1>
+          <motion.p
+            className="text-xl text-white/90"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            We've partnered with America's most trusted lenders to bring you the best HELOC options
+          </motion.p>
+        </div>
+      </div>
+
+      {/* Selection Criteria */}
+      <div className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl sm:text-5xl mb-4 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" style={{ fontWeight: 700 }}>
+              How We Select Partners
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              We maintain the highest standards to ensure you get the best experience
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {selectionCriteria.map((criteria, index) => {
+              const Icon = criteria.icon;
+              return (
+                <motion.div
+                  key={index}
+                  className="text-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <Icon className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl mb-3 text-gray-900" style={{ fontWeight: 600 }}>
+                    {criteria.title}
+                  </h3>
+                  <p className="text-gray-600">
+                    {criteria.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Partners Grid */}
+      <div className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl sm:text-5xl mb-4 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" style={{ fontWeight: 700 }}>
+              Featured Partners
+            </h2>
+            <p className="text-xl text-gray-600">
+              Compare offers from top-rated lenders
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {partners.map((partner, index) => (
+              <motion.div
+                key={index}
+                className="bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-200 hover:shadow-2xl transition-all"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+              >
+                {/* Header */}
+                <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-6 text-white">
+                  <h3 className="text-2xl mb-2" style={{ fontWeight: 700 }}>
+                    {partner.name}
+                  </h3>
+                  <div className="flex items-center gap-2">
+                    <div className="flex">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`w-4 h-4 ${i < Math.floor(partner.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-white/30'}`}
+                        />
+                      ))}
+                    </div>
+                    <span className="text-sm">{partner.rating}/5</span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    <div>
+                      <div className="text-xs text-gray-500 mb-1">Min Loan</div>
+                      <div className="text-lg text-gray-900" style={{ fontWeight: 600 }}>
+                        {partner.minLoan}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-xs text-gray-500 mb-1">Max Loan</div>
+                      <div className="text-lg text-gray-900" style={{ fontWeight: 600 }}>
+                        {partner.maxLoan}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mb-6">
+                    <div className="text-xs text-gray-500 mb-1">APR From</div>
+                    <div className="text-3xl bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent" style={{ fontWeight: 800 }}>
+                      {partner.aprFrom}
+                    </div>
+                  </div>
+
+                  <div className="mb-6">
+                    <div className="text-sm text-gray-700 mb-3" style={{ fontWeight: 600 }}>
+                      Key Features:
+                    </div>
+                    <ul className="space-y-2">
+                      {partner.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
+                          <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="bg-purple-50 rounded-xl p-4 mb-6">
+                    <div className="text-xs text-gray-600 mb-1" style={{ fontWeight: 600 }}>
+                      Best For:
+                    </div>
+                    <div className="text-sm text-gray-700">
+                      {partner.bestFor}
+                    </div>
+                  </div>
+
+                  <motion.button
+                    className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    style={{ fontWeight: 600 }}
+                  >
+                    View Rates
+                    <ExternalLink className="w-4 h-4" />
+                  </motion.button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* CTA */}
+      <div className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <TrendingUp className="w-16 h-16 text-purple-600 mx-auto mb-6" />
+            <h2 className="text-4xl sm:text-5xl mb-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" style={{ fontWeight: 700 }}>
+              Get Matched With The Right Partner
+            </h2>
+            <p className="text-xl text-gray-600 mb-8">
+              Answer a few quick questions and we'll recommend the best HELOC options for your unique situation
+            </p>
+            <motion.button
+              className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full text-lg shadow-lg hover:shadow-xl transition-all"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              style={{ fontWeight: 600 }}
+            >
+              Find My Perfect Match
+            </motion.button>
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
+}
