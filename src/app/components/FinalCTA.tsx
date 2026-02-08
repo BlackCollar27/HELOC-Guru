@@ -2,9 +2,13 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
-export function FinalCTA() {
+interface FinalCTAProps {
+  onNavigate: (page: string) => void;
+}
+
+export function FinalCTA({ onNavigate }: FinalCTAProps) {
   return (
-    <div className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-600 relative overflow-hidden">
+    <div className="py-24 px-4 sm:px-6 lg:px-8 bg-[#026EC4] relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -65,25 +69,17 @@ export function FinalCTA() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.button
-              className="px-8 py-4 bg-white text-purple-600 rounded-full text-lg shadow-2xl hover:shadow-3xl transition-all group"
+              className="px-8 py-4 bg-white text-[#026EC4] rounded-full text-lg shadow-2xl hover:shadow-3xl hover:bg-gray-50 transition-all group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => onNavigate('survey')}
               style={{ fontWeight: 600 }}
             >
-              <span className="flex items-center gap-2">
-                Get Started Now
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </span>
+              Get Your Free Equity Report
+              <ArrowRight className="inline-block w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </motion.button>
 
-            <motion.button
-              className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full text-lg hover:bg-white/10 transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              style={{ fontWeight: 600 }}
-            >
-              Learn More
-            </motion.button>
+            
           </div>
 
           <p className="text-sm text-white/70 mt-8">

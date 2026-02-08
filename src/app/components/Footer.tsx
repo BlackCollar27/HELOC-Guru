@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Sparkles, Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import logo from 'figma:asset/ff4a416c4f7e438ef1715fb8c96936568b791dfe.png';
 
 interface FooterProps {
   onNavigate: (page: string) => void;
@@ -13,20 +14,15 @@ export function Footer({ onNavigate }: FooterProps) {
   };
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 text-white">
+    <footer className="bg-white text-gray-800 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl flex items-center justify-center">
-                <Sparkles className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-2xl" style={{ fontWeight: 700 }}>
-                EquityKey
-              </span>
+              <img src={logo} alt="HELOC Guru" className="h-[80px]" />
             </div>
-            <p className="text-gray-300 mb-6">
+            <p className="text-gray-600 mb-6">
               Unlock your home's hidden value and discover financial freedom with trusted HELOC partners.
             </p>
             <div className="flex gap-3">
@@ -34,7 +30,7 @@ export function Footer({ onNavigate }: FooterProps) {
                 <motion.a
                   key={index}
                   href="#"
-                  className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
+                  className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-[#026EC4] hover:text-white transition-colors"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -46,7 +42,7 @@ export function Footer({ onNavigate }: FooterProps) {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg mb-4" style={{ fontWeight: 600 }}>
+            <h3 className="text-lg mb-4 text-gray-900" style={{ fontWeight: 600 }}>
               Quick Links
             </h3>
             <ul className="space-y-3">
@@ -59,7 +55,7 @@ export function Footer({ onNavigate }: FooterProps) {
                 <li key={item.id}>
                   <button
                     onClick={() => handleNavigate(item.id)}
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-600 hover:text-[#026EC4] transition-colors"
                   >
                     {item.label}
                   </button>
@@ -70,7 +66,7 @@ export function Footer({ onNavigate }: FooterProps) {
 
           {/* Company */}
           <div>
-            <h3 className="text-lg mb-4" style={{ fontWeight: 600 }}>
+            <h3 className="text-lg mb-4 text-gray-900" style={{ fontWeight: 600 }}>
               Company
             </h3>
             <ul className="space-y-3">
@@ -81,19 +77,19 @@ export function Footer({ onNavigate }: FooterProps) {
                 <li key={item.id}>
                   <button
                     onClick={() => handleNavigate(item.id)}
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-600 hover:text-[#026EC4] transition-colors"
                   >
                     {item.label}
                   </button>
                 </li>
               ))}
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <a href="#" className="text-gray-600 hover:text-[#026EC4] transition-colors">
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <a href="#" className="text-gray-600 hover:text-[#026EC4] transition-colors">
                   Terms of Service
                 </a>
               </li>
@@ -102,25 +98,25 @@ export function Footer({ onNavigate }: FooterProps) {
 
           {/* Contact */}
           <div>
-            <h3 className="text-lg mb-4" style={{ fontWeight: 600 }}>
+            <h3 className="text-lg mb-4 text-gray-900" style={{ fontWeight: 600 }}>
               Get in Touch
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-purple-400 mt-0.5" />
-                <a href="mailto:hello@equitykey.com" className="text-gray-300 hover:text-white transition-colors">
+                <Mail className="w-5 h-5 text-[#026EC4] mt-0.5" />
+                <a href="mailto:hello@equitykey.com" className="text-gray-600 hover:text-[#026EC4] transition-colors">
                   hello@equitykey.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-purple-400 mt-0.5" />
-                <a href="tel:1-800-EQUITY" className="text-gray-300 hover:text-white transition-colors">
+                <Phone className="w-5 h-5 text-[#026EC4] mt-0.5" />
+                <a href="tel:1-800-EQUITY" className="text-gray-600 hover:text-[#026EC4] transition-colors">
                   1-800-EQUITY
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-purple-400 mt-0.5" />
-                <span className="text-gray-300">
+                <MapPin className="w-5 h-5 text-[#026EC4] mt-0.5" />
+                <span className="text-gray-600">
                   123 Financial Plaza<br />
                   San Francisco, CA 94105
                 </span>
@@ -130,16 +126,16 @@ export function Footer({ onNavigate }: FooterProps) {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8">
+        <div className="border-t border-gray-200 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm text-center md:text-left">
-              © 2026 EquityKey. All rights reserved. NMLS #123456
+            <p className="text-gray-500 text-sm text-center md:text-left">
+              © 2026 EquityKey. All rights reserved.
             </p>
-            <p className="text-gray-400 text-sm text-center md:text-right">
-              Licensed in all 50 states. Equal Housing Lender.
+            <p className="text-gray-500 text-sm text-center md:text-right">
+              A lead generation service connecting homeowners with lenders.
             </p>
           </div>
-          <p className="text-gray-500 text-xs mt-4 text-center">
+          <p className="text-gray-400 text-xs mt-4 text-center">
             Disclaimer: EquityKey is not a lender. We connect homeowners with lending partners. 
             Actual loan terms, rates, and fees may vary. All loans subject to credit approval.
           </p>

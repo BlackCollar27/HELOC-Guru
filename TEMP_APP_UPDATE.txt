@@ -1,0 +1,36 @@
+import React from 'react';
+
+export default function App() {
+  const [currentPage, setCurrentPage] = useState('home');
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'home':
+        return <HomePage onNavigate={setCurrentPage} />;
+      case 'why-helocs':
+        return <WhyHELOCsPage />;
+      case 'about':
+        return <AboutPage />;
+      case 'contact':
+        return <ContactPage />;
+      case 'calculators':
+        return <CalculatorsPage />;
+      case 'partners':
+        return <PartnersPage />;
+      case 'survey':
+        return <SurveyPage onNavigate={setCurrentPage} />;
+      default:
+        return <HomePage onNavigate={setCurrentPage} />;
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-[#e7fcfe] to-[#f0f7fd] flex flex-col">
+      <Header currentPage={currentPage} onNavigate={setCurrentPage} />
+      <main className="flex-1">
+        {renderPage()}
+      </main>
+      <Footer onNavigate={setCurrentPage} />
+    </div>
+  );
+}

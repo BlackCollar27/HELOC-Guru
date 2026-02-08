@@ -4,13 +4,14 @@ import { Home, DollarSign, Target, CheckCircle2, ArrowRight, ArrowLeft } from 'l
 
 interface SurveyPageProps {
   onNavigate: (page: string) => void;
+  onSubmit: (data: any) => void;
 }
 
-export function SurveyPage({ onNavigate }: SurveyPageProps) {
+export function SurveyPage({ onNavigate, onSubmit }: SurveyPageProps) {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    homeValue: '',
-    mortgageBalance: '',
+    homeValue: '500000',
+    mortgageBalance: '250000',
     creditScore: '',
     propertyType: '',
     useOfFunds: '',
@@ -22,7 +23,7 @@ export function SurveyPage({ onNavigate }: SurveyPageProps) {
     zipCode: '',
   });
 
-  const totalSteps = 4;
+  const totalSteps = 3;
   const progress = (step / totalSteps) * 100;
 
   const handleNext = () => {
@@ -30,8 +31,9 @@ export function SurveyPage({ onNavigate }: SurveyPageProps) {
       setStep(step + 1);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      // Final step - navigate to partners
-      onNavigate('partners');
+      // Final step - submit survey data and go to results
+      console.log('Submitting form data:', formData);
+      onSubmit(formData);
     }
   };
 
@@ -48,28 +50,6 @@ export function SurveyPage({ onNavigate }: SurveyPageProps) {
 
   return (
     <div className="pt-20 min-h-screen">
-      {/* Progress Bar */}
-      <div className="bg-white border-b border-gray-200 sticky top-20 z-40">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600" style={{ fontWeight: 600 }}>
-              Step {step} of {totalSteps}
-            </span>
-            <span className="text-sm text-gray-600" style={{ fontWeight: 600 }}>
-              {Math.round(progress)}% Complete
-            </span>
-          </div>
-          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-            <motion.div
-              className="h-full bg-gradient-to-r from-purple-600 to-blue-600"
-              initial={{ width: 0 }}
-              animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.5 }}
-            />
-          </div>
-        </div>
-      </div>
-
       <div className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <AnimatePresence mode="wait">
@@ -79,6 +59,8 @@ export function SurveyPage({ onNavigate }: SurveyPageProps) {
                 formData={formData}
                 updateFormData={updateFormData}
                 onNext={handleNext}
+                step={step}
+                totalSteps={totalSteps}
               />
             )}
             {step === 2 && (
@@ -88,6 +70,8 @@ export function SurveyPage({ onNavigate }: SurveyPageProps) {
                 updateFormData={updateFormData}
                 onNext={handleNext}
                 onBack={handleBack}
+                step={step}
+                totalSteps={totalSteps}
               />
             )}
             {step === 3 && (
@@ -97,15 +81,8 @@ export function SurveyPage({ onNavigate }: SurveyPageProps) {
                 updateFormData={updateFormData}
                 onNext={handleNext}
                 onBack={handleBack}
-              />
-            )}
-            {step === 4 && (
-              <Step4
-                key="step4"
-                formData={formData}
-                updateFormData={updateFormData}
-                onNext={handleNext}
-                onBack={handleBack}
+                step={step}
+                totalSteps={totalSteps}
               />
             )}
           </AnimatePresence>
@@ -120,9 +97,24 @@ interface StepProps {
   updateFormData: (field: string, value: string) => void;
   onNext: () => void;
   onBack?: () => void;
+  step: number;
+  totalSteps: number;
 }
 
-function Step1({ formData, updateFormData, onNext }: StepProps) {
+function Step1({ formData, updateFormData, onNext, step, totalSteps }: StepProps) {
+  const homeValue = Number(formData.homeValue) || 500000;
+  const mortgageBalance = Number(formData.mortgageBalance) || 250000;
+  const progress = (step / totalSteps) * 100;
+
+  const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(value);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -131,11 +123,27 @@ function Step1({ formData, updateFormData, onNext }: StepProps) {
       transition={{ duration: 0.3 }}
       className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-200"
     >
+      {/* Progress Bar */}
+      <div className="mb-8">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-sm text-gray-600">Step {step} of {totalSteps}</span>
+          <span className="text-sm text-[#026EC4]" style={{ fontWeight: 600 }}>{Math.round(progress)}%</span>
+        </div>
+        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+          <motion.div
+            className="h-full bg-[#026EC4] rounded-full"
+            initial={{ width: 0 }}
+            animate={{ width: `${progress}%` }}
+            transition={{ duration: 0.5 }}
+          />
+        </div>
+      </div>
+
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl flex items-center justify-center">
+        <div className="w-12 h-12 bg-[#026EC4] rounded-xl flex items-center justify-center">
           <Home className="w-6 h-6 text-white" />
         </div>
-        <h2 className="text-3xl bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" style={{ fontWeight: 700 }}>
+        <h2 className="text-3xl text-gray-900" style={{ fontWeight: 700 }}>
           Tell Us About Your Home
         </h2>
       </div>
@@ -144,33 +152,59 @@ function Step1({ formData, updateFormData, onNext }: StepProps) {
         First, let's understand your property details
       </p>
 
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div>
-          <label className="block text-sm text-gray-700 mb-2" style={{ fontWeight: 600 }}>
-            Estimated Home Value *
+          <label className="block text-sm text-gray-700 mb-3" style={{ fontWeight: 600 }}>
+            Estimated Home Value
           </label>
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-3xl text-gray-900" style={{ fontWeight: 700 }}>
+              {formatCurrency(homeValue)}
+            </span>
+          </div>
           <input
-            type="number"
-            value={formData.homeValue}
+            type="range"
+            min="100000"
+            max="2000000"
+            step="10000"
+            value={homeValue}
             onChange={(e) => updateFormData('homeValue', e.target.value)}
-            placeholder="$500,000"
-            className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-lg"
-            required
+            className="w-full h-3 bg-gradient-to-r from-purple-200 to-blue-200 rounded-full appearance-none cursor-pointer slider"
+            style={{
+              background: `linear-gradient(to right, rgb(2 110 196) 0%, rgb(14 206 224) ${((homeValue - 100000) / (2000000 - 100000)) * 100}%, rgb(226 232 240) ${((homeValue - 100000) / (2000000 - 100000)) * 100}%, rgb(226 232 240) 100%)`
+            }}
           />
+          <div className="flex justify-between text-xs text-gray-500 mt-2">
+            <span>$100K</span>
+            <span>$2M</span>
+          </div>
         </div>
 
         <div>
-          <label className="block text-sm text-gray-700 mb-2" style={{ fontWeight: 600 }}>
-            Remaining Mortgage Balance *
+          <label className="block text-sm text-gray-700 mb-3" style={{ fontWeight: 600 }}>
+            Remaining Mortgage Balance
           </label>
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-3xl text-gray-900" style={{ fontWeight: 700 }}>
+              {formatCurrency(mortgageBalance)}
+            </span>
+          </div>
           <input
-            type="number"
-            value={formData.mortgageBalance}
+            type="range"
+            min="0"
+            max={homeValue * 0.9}
+            step="5000"
+            value={mortgageBalance}
             onChange={(e) => updateFormData('mortgageBalance', e.target.value)}
-            placeholder="$250,000"
-            className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-lg"
-            required
+            className="w-full h-3 bg-gradient-to-r from-purple-200 to-blue-200 rounded-full appearance-none cursor-pointer slider"
+            style={{
+              background: `linear-gradient(to right, rgb(2 110 196) 0%, rgb(14 206 224) ${(mortgageBalance / (homeValue * 0.9)) * 100}%, rgb(226 232 240) ${(mortgageBalance / (homeValue * 0.9)) * 100}%, rgb(226 232 240) 100%)`
+            }}
           />
+          <div className="flex justify-between text-xs text-gray-500 mt-2">
+            <span>$0</span>
+            <span>{formatCurrency(homeValue * 0.9)}</span>
+          </div>
         </div>
 
         <div>
@@ -192,7 +226,7 @@ function Step1({ formData, updateFormData, onNext }: StepProps) {
                 whileTap={{ scale: 0.98 }}
                 style={{ fontWeight: formData.propertyType === type ? 600 : 500 }}
               >
-                {formData.propertyType === type && <CheckCircle2 className="w-5 h-5 text-purple-600 inline-block mr-2" />}
+                {formData.propertyType === type && <CheckCircle2 className="w-5 h-5 text-[#026EC4] inline-block mr-2" />}
                 {type}
               </motion.button>
             ))}
@@ -203,7 +237,7 @@ function Step1({ formData, updateFormData, onNext }: StepProps) {
       <motion.button
         onClick={onNext}
         disabled={!formData.homeValue || !formData.mortgageBalance || !formData.propertyType}
-        className="w-full mt-8 px-6 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="w-full mt-8 px-6 py-4 bg-[#026EC4] text-white rounded-xl shadow-lg hover:shadow-xl hover:bg-[#0ECEEO] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         whileHover={{ scale: formData.homeValue && formData.mortgageBalance && formData.propertyType ? 1.02 : 1 }}
         whileTap={{ scale: 0.98 }}
         style={{ fontWeight: 600 }}
@@ -211,11 +245,47 @@ function Step1({ formData, updateFormData, onNext }: StepProps) {
         Continue
         <ArrowRight className="w-5 h-5" />
       </motion.button>
+
+      <style>{`
+        .slider::-webkit-slider-thumb {
+          appearance: none;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background: #026EC4;
+          cursor: pointer;
+          box-shadow: 0 2px 8px rgba(2, 110, 196, 0.5);
+          transition: all 0.2s;
+        }
+
+        .slider::-webkit-slider-thumb:hover {
+          transform: scale(1.2);
+          box-shadow: 0 4px 12px rgba(2, 110, 196, 0.6);
+        }
+
+        .slider::-moz-range-thumb {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background: #026EC4;
+          cursor: pointer;
+          border: none;
+          box-shadow: 0 2px 8px rgba(2, 110, 196, 0.5);
+          transition: all 0.2s;
+        }
+
+        .slider::-moz-range-thumb:hover {
+          transform: scale(1.2);
+          box-shadow: 0 4px 12px rgba(2, 110, 196, 0.6);
+        }
+      `}</style>
     </motion.div>
   );
 }
 
-function Step2({ formData, updateFormData, onNext, onBack }: StepProps) {
+function Step2({ formData, updateFormData, onNext, onBack, step, totalSteps }: StepProps) {
+  const progress = (step / totalSteps) * 100;
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -224,11 +294,27 @@ function Step2({ formData, updateFormData, onNext, onBack }: StepProps) {
       transition={{ duration: 0.3 }}
       className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-200"
     >
+      {/* Progress Bar */}
+      <div className="mb-8">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-sm text-gray-600">Step {step} of {totalSteps}</span>
+          <span className="text-sm text-[#026EC4]" style={{ fontWeight: 600 }}>{Math.round(progress)}%</span>
+        </div>
+        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+          <motion.div
+            className="h-full bg-[#026EC4] rounded-full"
+            initial={{ width: 0 }}
+            animate={{ width: `${progress}%` }}
+            transition={{ duration: 0.5 }}
+          />
+        </div>
+      </div>
+
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
+        <div className="w-12 h-12 bg-[#026EC4] rounded-xl flex items-center justify-center">
           <Target className="w-6 h-6 text-white" />
         </div>
-        <h2 className="text-3xl bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" style={{ fontWeight: 700 }}>
+        <h2 className="text-3xl text-gray-900" style={{ fontWeight: 700 }}>
           Your Financial Goals
         </h2>
       </div>
@@ -264,7 +350,7 @@ function Step2({ formData, updateFormData, onNext, onBack }: StepProps) {
                 whileTap={{ scale: 0.99 }}
                 style={{ fontWeight: formData.useOfFunds === use ? 600 : 500 }}
               >
-                {formData.useOfFunds === use && <CheckCircle2 className="w-5 h-5 text-purple-600 inline-block mr-2" />}
+                {formData.useOfFunds === use && <CheckCircle2 className="w-5 h-5 text-[#026EC4] inline-block mr-2" />}
                 {use}
               </motion.button>
             ))}
@@ -290,7 +376,7 @@ function Step2({ formData, updateFormData, onNext, onBack }: StepProps) {
                 whileTap={{ scale: 0.98 }}
                 style={{ fontWeight: formData.timeframe === time ? 600 : 500 }}
               >
-                {formData.timeframe === time && <CheckCircle2 className="w-5 h-5 text-purple-600 inline-block mr-2" />}
+                {formData.timeframe === time && <CheckCircle2 className="w-5 h-5 text-[#026EC4] inline-block mr-2" />}
                 {time}
               </motion.button>
             ))}
@@ -325,7 +411,9 @@ function Step2({ formData, updateFormData, onNext, onBack }: StepProps) {
   );
 }
 
-function Step3({ formData, updateFormData, onNext, onBack }: StepProps) {
+function Step3({ formData, updateFormData, onNext, onBack, step, totalSteps }: StepProps) {
+  const progress = (step / totalSteps) * 100;
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -334,11 +422,27 @@ function Step3({ formData, updateFormData, onNext, onBack }: StepProps) {
       transition={{ duration: 0.3 }}
       className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-200"
     >
+      {/* Progress Bar */}
+      <div className="mb-8">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-sm text-gray-600">Step {step} of {totalSteps}</span>
+          <span className="text-sm text-[#026EC4]" style={{ fontWeight: 600 }}>{Math.round(progress)}%</span>
+        </div>
+        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+          <motion.div
+            className="h-full bg-[#026EC4] rounded-full"
+            initial={{ width: 0 }}
+            animate={{ width: `${progress}%` }}
+            transition={{ duration: 0.5 }}
+          />
+        </div>
+      </div>
+
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-green-500 rounded-xl flex items-center justify-center">
+        <div className="w-12 h-12 bg-[#026EC4] rounded-xl flex items-center justify-center">
           <DollarSign className="w-6 h-6 text-white" />
         </div>
-        <h2 className="text-3xl bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" style={{ fontWeight: 700 }}>
+        <h2 className="text-3xl text-gray-900" style={{ fontWeight: 700 }}>
           Credit Information
         </h2>
       </div>
@@ -372,7 +476,7 @@ function Step3({ formData, updateFormData, onNext, onBack }: StepProps) {
                 whileTap={{ scale: 0.98 }}
                 style={{ fontWeight: formData.creditScore === score.value ? 600 : 500 }}
               >
-                {formData.creditScore === score.value && <CheckCircle2 className="w-5 h-5 text-purple-600 inline-block mr-2" />}
+                {formData.creditScore === score.value && <CheckCircle2 className="w-5 h-5 text-[#026EC4] inline-block mr-2" />}
                 {score.label}
               </motion.button>
             ))}
@@ -407,143 +511,6 @@ function Step3({ formData, updateFormData, onNext, onBack }: StepProps) {
         >
           Continue
           <ArrowRight className="w-5 h-5" />
-        </motion.button>
-      </div>
-    </motion.div>
-  );
-}
-
-function Step4({ formData, updateFormData, onNext, onBack }: StepProps) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: -20 }}
-      transition={{ duration: 0.3 }}
-      className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-200"
-    >
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center">
-          <CheckCircle2 className="w-6 h-6 text-white" />
-        </div>
-        <h2 className="text-3xl bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" style={{ fontWeight: 700 }}>
-          Almost There!
-        </h2>
-      </div>
-
-      <p className="text-lg text-gray-600 mb-8">
-        Just a few details to see your personalized matches
-      </p>
-
-      <div className="space-y-6">
-        <div className="grid md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm text-gray-700 mb-2" style={{ fontWeight: 600 }}>
-              First Name *
-            </label>
-            <input
-              type="text"
-              value={formData.firstName}
-              onChange={(e) => updateFormData('firstName', e.target.value)}
-              placeholder="John"
-              className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-sm text-gray-700 mb-2" style={{ fontWeight: 600 }}>
-              Last Name *
-            </label>
-            <input
-              type="text"
-              value={formData.lastName}
-              onChange={(e) => updateFormData('lastName', e.target.value)}
-              placeholder="Smith"
-              className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-              required
-            />
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-sm text-gray-700 mb-2" style={{ fontWeight: 600 }}>
-            Email Address *
-          </label>
-          <input
-            type="email"
-            value={formData.email}
-            onChange={(e) => updateFormData('email', e.target.value)}
-            placeholder="john@example.com"
-            className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-            required
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm text-gray-700 mb-2" style={{ fontWeight: 600 }}>
-            Phone Number *
-          </label>
-          <input
-            type="tel"
-            value={formData.phone}
-            onChange={(e) => updateFormData('phone', e.target.value)}
-            placeholder="(555) 123-4567"
-            className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-            required
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm text-gray-700 mb-2" style={{ fontWeight: 600 }}>
-            ZIP Code *
-          </label>
-          <input
-            type="text"
-            value={formData.zipCode}
-            onChange={(e) => updateFormData('zipCode', e.target.value)}
-            placeholder="94105"
-            maxLength={5}
-            className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-            required
-          />
-        </div>
-
-        <div className="bg-purple-50 rounded-xl p-4 border border-purple-200">
-          <p className="text-xs text-gray-700">
-            By clicking "View My Matches", you agree to our{' '}
-            <a href="#" className="text-purple-600 hover:text-purple-700 underline">
-              Terms of Service
-            </a>{' '}
-            and{' '}
-            <a href="#" className="text-purple-600 hover:text-purple-700 underline">
-              Privacy Policy
-            </a>
-            . You consent to receive calls and texts from EquityKey and our lending partners at the number provided, including via automated technology.
-          </p>
-        </div>
-      </div>
-
-      <div className="flex gap-4 mt-8">
-        <motion.button
-          onClick={onBack}
-          className="px-6 py-4 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-all flex items-center gap-2"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          style={{ fontWeight: 600 }}
-        >
-          <ArrowLeft className="w-5 h-5" />
-          Back
-        </motion.button>
-        <motion.button
-          onClick={onNext}
-          disabled={!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.zipCode}
-          className="flex-1 px-6 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-          whileHover={{ scale: formData.firstName && formData.lastName && formData.email && formData.phone && formData.zipCode ? 1.02 : 1 }}
-          whileTap={{ scale: 0.98 }}
-          style={{ fontWeight: 600 }}
-        >
-          View My Matches
-          <CheckCircle2 className="w-5 h-5" />
         </motion.button>
       </div>
     </motion.div>

@@ -7,14 +7,17 @@ import { AboutPage } from './components/pages/AboutPage';
 import { ContactPage } from './components/pages/ContactPage';
 import { CalculatorsPage } from './components/pages/CalculatorsPage';
 import { PartnersPage } from './components/pages/PartnersPage';
+import { SurveyPage } from './components/pages/SurveyPage';
+import { ResultsPage } from './components/pages/ResultsPage';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [surveyData, setSurveyData] = useState(null);
 
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
-        return <HomePage />;
+        return <HomePage onNavigate={setCurrentPage} />;
       case 'why-helocs':
         return <WhyHELOCsPage />;
       case 'about':
@@ -25,13 +28,20 @@ export default function App() {
         return <CalculatorsPage />;
       case 'partners':
         return <PartnersPage />;
+      case 'survey':
+        return <SurveyPage onNavigate={setCurrentPage} onSubmit={(data) => {
+          setSurveyData(data);
+          setCurrentPage('results');
+        }} />;
+      case 'results':
+        return surveyData ? <ResultsPage onNavigate={setCurrentPage} surveyData={surveyData} /> : <HomePage onNavigate={setCurrentPage} />;
       default:
-        return <HomePage />;
+        return <HomePage onNavigate={setCurrentPage} />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 flex flex-col">
+    <div className="min-h-screen bg-cyan-50 flex flex-col">
       <Header currentPage={currentPage} onNavigate={setCurrentPage} />
       <main className="flex-1">
         {renderPage()}

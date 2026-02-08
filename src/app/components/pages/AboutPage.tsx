@@ -52,7 +52,7 @@ export function AboutPage() {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-600 text-white py-24 px-4 sm:px-6 lg:px-8">
+      <div className="bg-[#026EC4] text-white py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h1
             className="text-5xl sm:text-6xl mb-6"
@@ -75,7 +75,7 @@ export function AboutPage() {
       </div>
 
       {/* Mission */}
-      <div className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="py-24 px-4 sm:px-6 lg:px-8 bg-cyan-50">
         <div className="max-w-4xl mx-auto">
           <motion.div
             className="text-center mb-12"
@@ -84,10 +84,10 @@ export function AboutPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-block p-4 bg-gradient-to-br from-purple-100 to-blue-100 rounded-2xl mb-6">
-              <Target className="w-12 h-12 text-purple-600" />
+            <div className="inline-block p-4 bg-white rounded-2xl mb-6 shadow-lg">
+              <Target className="w-12 h-12 text-[#026EC4]" />
             </div>
-            <h2 className="text-4xl sm:text-5xl mb-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" style={{ fontWeight: 700 }}>
+            <h2 className="text-4xl sm:text-5xl mb-6 text-gray-900" style={{ fontWeight: 700 }}>
               Our Mission
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed">
@@ -105,7 +105,7 @@ export function AboutPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8 border border-purple-200">
-              <TrendingUp className="w-10 h-10 text-purple-600 mb-4" />
+              <TrendingUp className="w-10 h-10 text-[#026EC4] mb-4" />
               <h3 className="text-2xl mb-3 text-gray-900" style={{ fontWeight: 600 }}>
                 Our Story
               </h3>
@@ -115,8 +115,8 @@ export function AboutPage() {
                 had to be a better way.
               </p>
             </div>
-            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 border border-blue-200">
-              <Shield className="w-10 h-10 text-blue-600 mb-4" />
+            <div className="bg-cyan-50 rounded-2xl p-8 border border-cyan-200">
+              <TrendingUp className="w-10 h-10 text-purple-600 mb-4" />
               <h3 className="text-2xl mb-3 text-gray-900" style={{ fontWeight: 600 }}>
                 Our Approach
               </h3>
@@ -131,7 +131,7 @@ export function AboutPage() {
       </div>
 
       {/* Values */}
-      <div className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
+      <div className="py-24 px-4 sm:px-6 lg:px-8 bg-cyan-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             className="text-center mb-16"
@@ -140,7 +140,7 @@ export function AboutPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl sm:text-5xl mb-4 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" style={{ fontWeight: 700 }}>
+            <h2 className="text-4xl sm:text-5xl mb-4 text-gray-900" style={{ fontWeight: 700 }}>
               Our Values
             </h2>
             <p className="text-xl text-gray-600">
@@ -154,14 +154,14 @@ export function AboutPage() {
               return (
                 <motion.div
                   key={index}
-                  className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 hover:shadow-xl transition-shadow"
+                  className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ y: -5 }}
                 >
-                  <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl flex items-center justify-center mb-5 shadow-lg">
+                  <div className="w-14 h-14 bg-[#026EC4] rounded-xl flex items-center justify-center mb-5 shadow-lg">
                     <Icon className="w-7 h-7 text-white" />
                   </div>
                   <h3 className="text-xl mb-3 text-gray-900" style={{ fontWeight: 600 }}>
@@ -178,7 +178,7 @@ export function AboutPage() {
       </div>
 
       {/* Team */}
-      <div className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="py-24 px-4 sm:px-6 lg:px-8 bg-cyan-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             className="text-center mb-16"
@@ -187,7 +187,7 @@ export function AboutPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl sm:text-5xl mb-4 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" style={{ fontWeight: 700 }}>
+            <h2 className="text-4xl sm:text-5xl mb-4 text-gray-900" style={{ fontWeight: 700 }}>
               Meet Our Team
             </h2>
             <p className="text-xl text-gray-600">
@@ -205,7 +205,7 @@ export function AboutPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="w-32 h-32 bg-gradient-to-br from-purple-400 to-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center shadow-xl">
+                <div className="w-32 h-32 bg-[#026EC4] rounded-full mx-auto mb-4 flex items-center justify-center shadow-xl">
                   <span className="text-4xl text-white" style={{ fontWeight: 700 }}>
                     {member.name.split(' ').map(n => n[0]).join('')}
                   </span>
@@ -213,7 +213,7 @@ export function AboutPage() {
                 <h3 className="text-xl mb-1 text-gray-900" style={{ fontWeight: 600 }}>
                   {member.name}
                 </h3>
-                <div className="text-purple-600 mb-3" style={{ fontWeight: 600 }}>
+                <div className="text-[#026EC4] mb-3" style={{ fontWeight: 600 }}>
                   {member.role}
                 </div>
                 <p className="text-sm text-gray-600">
@@ -226,7 +226,7 @@ export function AboutPage() {
       </div>
 
       {/* Stats */}
-      <div className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-600 text-white">
+      <div className="py-24 px-4 sm:px-6 lg:px-8 bg-[#026EC4] text-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             {[

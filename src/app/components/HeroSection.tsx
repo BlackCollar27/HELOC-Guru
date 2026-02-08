@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Shield, Lock, CheckCircle2, Sparkles, TrendingUp } from 'lucide-react';
 
-export function HeroSection() {
+interface HeroSectionProps {
+  onNavigate: (page: string) => void;
+}
+
+export function HeroSection({ onNavigate }: HeroSectionProps) {
   const [homeValue, setHomeValue] = useState(500000);
   const [mortgageBalance, setMortgageBalance] = useState(250000);
   const [animatedEquity, setAnimatedEquity] = useState(0);
@@ -47,34 +51,9 @@ export function HeroSection() {
 
   return (
     <div className="relative overflow-hidden">
-      {/* Animated background blobs */}
+      {/* Background decorations - removed gradients */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute w-96 h-96 bg-gradient-to-br from-purple-400/30 to-pink-400/30 rounded-full blur-3xl"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          style={{ top: '10%', left: '10%' }}
-        />
-        <motion.div
-          className="absolute w-96 h-96 bg-gradient-to-br from-blue-400/30 to-cyan-400/30 rounded-full blur-3xl"
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 100, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          style={{ top: '50%', right: '10%' }}
-        />
+        {/* Removed animated gradient blobs */}
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24">
@@ -85,17 +64,9 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full mb-6"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <Sparkles className="w-4 h-4 text-purple-600" />
-              <span className="text-sm text-purple-900">Unlock Your Home's Potential</span>
-            </motion.div>
+            
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl mb-6 bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 bg-clip-text text-transparent" style={{ fontWeight: 700, lineHeight: 1.1 }}>
+            <h1 className="mb-6 text-gray-900 px-[0px] pt-[20px] pb-[0px] text-[42px]" style={{ fontWeight: 700, lineHeight: 1.1 }}>
               Your Home Might Be Hiding Six Figures.
             </h1>
 
@@ -120,13 +91,12 @@ export function HeroSection() {
             </div>
 
             <motion.button
-              className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full text-lg shadow-lg shadow-purple-500/50 hover:shadow-xl hover:shadow-purple-500/60 transition-all"
+              className="px-8 py-4 bg-[#026EC4] text-white rounded-full text-lg shadow-lg hover:shadow-xl hover:bg-[#0ECEEO] transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => onNavigate('survey')}
               style={{ fontWeight: 600 }}
-            >
-              Discover My Equity
-            </motion.button>
+            >Shop Rates →</motion.button>
           </motion.div>
 
           {/* Right: Interactive Calculator */}
@@ -136,7 +106,7 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <motion.div
-              className="bg-white/80 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/20"
+              className="bg-white rounded-3xl shadow-2xl p-[32px] mx-[0px] mt-[40px] mb-[0px]"
               whileHover={{ y: -5 }}
               transition={{ duration: 0.3 }}
             >
@@ -160,7 +130,7 @@ export function HeroSection() {
                   onChange={(e) => setHomeValue(Number(e.target.value))}
                   className="w-full h-3 bg-gradient-to-r from-purple-200 to-blue-200 rounded-full appearance-none cursor-pointer slider"
                   style={{
-                    background: `linear-gradient(to right, rgb(147 51 234) 0%, rgb(59 130 246) ${((homeValue - 100000) / (2000000 - 100000)) * 100}%, rgb(226 232 240) ${((homeValue - 100000) / (2000000 - 100000)) * 100}%, rgb(226 232 240) 100%)`
+                    background: `linear-gradient(to right, rgb(2 110 196) 0%, rgb(14 206 224) ${((homeValue - 100000) / (2000000 - 100000)) * 100}%, rgb(226 232 240) ${((homeValue - 100000) / (2000000 - 100000)) * 100}%, rgb(226 232 240) 100%)`
                   }}
                 />
                 <div className="flex justify-between text-xs text-gray-500 mt-2">
@@ -188,7 +158,7 @@ export function HeroSection() {
                   onChange={(e) => setMortgageBalance(Number(e.target.value))}
                   className="w-full h-3 bg-gradient-to-r from-purple-200 to-blue-200 rounded-full appearance-none cursor-pointer slider"
                   style={{
-                    background: `linear-gradient(to right, rgb(147 51 234) 0%, rgb(59 130 246) ${(mortgageBalance / (homeValue * 0.9)) * 100}%, rgb(226 232 240) ${(mortgageBalance / (homeValue * 0.9)) * 100}%, rgb(226 232 240) 100%)`
+                    background: `linear-gradient(to right, rgb(2 110 196) 0%, rgb(14 206 224) ${(mortgageBalance / (homeValue * 0.9)) * 100}%, rgb(226 232 240) ${(mortgageBalance / (homeValue * 0.9)) * 100}%, rgb(226 232 240) 100%)`
                   }}
                 />
                 <div className="flex justify-between text-xs text-gray-500 mt-2">
@@ -198,7 +168,7 @@ export function HeroSection() {
               </div>
 
               {/* Results Display */}
-              <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-6 border-2 border-purple-200">
+              <div className="bg-cyan-50 rounded-2xl p-6 border-2 border-cyan-200">
                 <div className="mb-4">
                   <div className="text-sm text-gray-600 mb-1">Your Equity</div>
                   <motion.div
@@ -222,13 +192,13 @@ export function HeroSection() {
                   </div>
                   <motion.div
                     key={animatedCash}
-                    className="text-4xl bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
+                    className="text-4xl text-[#026EC4]"
                     style={{ fontWeight: 800 }}
                     initial={{ scale: 1.15 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.3 }}
                   >
-                    {formatCurrency(animatedCash)}
+                    ${animatedCash.toLocaleString()}
                   </motion.div>
                   <p className="text-xs text-gray-500 mt-2">Based on 85% loan-to-value ratio</p>
                 </div>
@@ -244,31 +214,26 @@ export function HeroSection() {
           width: 24px;
           height: 24px;
           border-radius: 50%;
-          background: linear-gradient(135deg, rgb(147 51 234), rgb(59 130 246));
+          background: #026EC4;
           cursor: pointer;
-          box-shadow: 0 2px 8px rgba(147, 51, 234, 0.5);
-          transition: all 0.2s;
+          transition: transform 0.2s;
         }
 
         .slider::-webkit-slider-thumb:hover {
           transform: scale(1.2);
-          box-shadow: 0 4px 12px rgba(147, 51, 234, 0.6);
         }
 
         .slider::-moz-range-thumb {
           width: 24px;
           height: 24px;
           border-radius: 50%;
-          background: linear-gradient(135deg, rgb(147 51 234), rgb(59 130 246));
+          background: #026EC4;
           cursor: pointer;
-          border: none;
-          box-shadow: 0 2px 8px rgba(147, 51, 234, 0.5);
-          transition: all 0.2s;
+          transition: transform 0.2s;
         }
 
         .slider::-moz-range-thumb:hover {
           transform: scale(1.2);
-          box-shadow: 0 4px 12px rgba(147, 51, 234, 0.6);
         }
       `}</style>
     </div>

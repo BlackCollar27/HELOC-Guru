@@ -5,14 +5,18 @@ import { BenefitsSection } from '../BenefitsSection';
 import { TrustSection } from '../TrustSection';
 import { FinalCTA } from '../FinalCTA';
 
-export function HomePage() {
+interface HomePageProps {
+  onNavigate: (page: string) => void;
+}
+
+export function HomePage({ onNavigate }: HomePageProps) {
   return (
     <>
-      <HeroSection />
+      <HeroSection onNavigate={onNavigate} />
       <HowItWorks />
       <BenefitsSection />
       <TrustSection />
-      <FinalCTA />
+      <FinalCTA onNavigate={onNavigate} />
     </>
   );
 }

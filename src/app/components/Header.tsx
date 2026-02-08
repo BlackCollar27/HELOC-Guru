@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import logo from 'figma:asset/ff4a416c4f7e438ef1715fb8c96936568b791dfe.png';
+
+type Page = 'home' | 'why-helocs' | 'about' | 'contact' | 'calculators' | 'partners' | 'survey';
 
 interface HeaderProps {
-  currentPage: string;
-  onNavigate: (page: string) => void;
+  currentPage: Page;
+  onNavigate: (page: Page) => void;
 }
 
 const navItems = [
   { id: 'home', label: 'Home' },
   { id: 'why-helocs', label: 'Why HELOCs' },
-  { id: 'calculators', label: 'Calculators & Surveys' },
+  { id: 'calculators', label: 'Calculators' },
   { id: 'partners', label: 'Top Partners' },
   { id: 'about', label: 'About Us' },
   { id: 'contact', label: 'Contact' },
@@ -29,7 +32,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavigate = (page: string) => {
+  const handleNavigate = (page: Page) => {
     onNavigate(page);
     setIsMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -51,16 +54,11 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
           {/* Logo */}
           <motion.button
             onClick={() => handleNavigate('home')}
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-2 group mx-auto lg:mx-0"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
-              <Sparkles className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-2xl bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent" style={{ fontWeight: 700 }}>
-              EquityKey
-            </span>
+            <img src={logo} alt="HELOC Guru" className="h-[70px]" />
           </motion.button>
 
           {/* Desktop Navigation */}
@@ -71,8 +69,8 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
                 onClick={() => handleNavigate(item.id)}
                 className={`px-4 py-2 rounded-full transition-all ${
                   currentPage === item.id
-                    ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg'
-                    : 'text-gray-700 hover:bg-gray-100'
+                    ? 'bg-[#026EC4] text-white shadow-lg'
+                    : 'bg-[#0ECEEO] text-gray-900 hover:bg-[#026EC4] hover:text-white'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -85,9 +83,10 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
 
           {/* CTA Button - Desktop */}
           <motion.button
-            className="hidden lg:block px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all"
+            className="hidden lg:block px-6 py-3 bg-[#026EC4] text-white rounded-full shadow-lg hover:shadow-xl hover:bg-[#0ECEEO] transition-all"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => handleNavigate('survey')}
             style={{ fontWeight: 600 }}
           >
             Get Started
@@ -95,7 +94,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="lg:hidden p-2 rounded-xl hover:bg-gray-100 transition-colors"
+            className="lg:hidden p-2 rounded-xl hover:bg-gray-100 transition-colors absolute right-4"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             whileTap={{ scale: 0.95 }}
           >
@@ -112,7 +111,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="lg:hidden bg-white border-t border-gray-200"
+            className="lg:hidden bg-cyan-50 border-t border-gray-200"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -125,8 +124,8 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
                   onClick={() => handleNavigate(item.id)}
                   className={`w-full text-left px-4 py-3 rounded-xl transition-all ${
                     currentPage === item.id
-                      ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white'
-                      : 'text-gray-700 hover:bg-gray-100'
+                      ? 'bg-[#026EC4] text-white'
+                      : 'text-gray-700 hover:bg-cyan-200'
                   }`}
                   whileTap={{ scale: 0.98 }}
                   style={{ fontWeight: currentPage === item.id ? 600 : 500 }}
@@ -135,8 +134,9 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
                 </motion.button>
               ))}
               <motion.button
-                className="w-full px-4 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl mt-4"
+                className="w-full px-4 py-3 bg-[#026EC4] text-white rounded-xl mt-4"
                 whileTap={{ scale: 0.98 }}
+                onClick={() => handleNavigate('survey')}
                 style={{ fontWeight: 600 }}
               >
                 Get Started

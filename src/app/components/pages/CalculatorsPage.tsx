@@ -8,7 +8,7 @@ export function CalculatorsPage() {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-600 text-white py-24 px-4 sm:px-6 lg:px-8">
+      <div className="bg-[#026EC4] text-white py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             className="inline-block p-4 bg-white/20 backdrop-blur-sm rounded-2xl mb-6"
@@ -71,7 +71,7 @@ export function CalculatorsPage() {
       </div>
 
       {/* Calculator Content */}
-      <div className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
+      <div className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           {activeCalculator === 'equity' && <EquityCalculator />}
           {activeCalculator === 'payment' && <PaymentCalculator />}
@@ -80,7 +80,7 @@ export function CalculatorsPage() {
       </div>
 
       {/* Educational Content */}
-      <div className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="py-24 px-4 sm:px-6 lg:px-8 bg-cyan-50">
         <div className="max-w-4xl mx-auto">
           <motion.div
             className="text-center mb-12"
@@ -89,7 +89,7 @@ export function CalculatorsPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl sm:text-4xl mb-4 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" style={{ fontWeight: 700 }}>
+            <h2 className="text-3xl sm:text-4xl mb-4 text-gray-900" style={{ fontWeight: 700 }}>
               Understanding Your Results
             </h2>
           </motion.div>
@@ -168,7 +168,7 @@ function EquityCalculator() {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-3xl mb-8 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" style={{ fontWeight: 700 }}>
+        <h2 className="text-3xl mb-8 text-gray-900" style={{ fontWeight: 700 }}>
           Calculate Your Home Equity
         </h2>
 
@@ -224,9 +224,9 @@ function EquityCalculator() {
           </h3>
 
           <div className="space-y-6">
-            <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-6 border-2 border-purple-200">
+            <div className="bg-white rounded-2xl p-6 shadow-lg">
               <div className="text-sm text-gray-600 mb-2">Total Home Equity</div>
-              <div className="text-4xl mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent" style={{ fontWeight: 800 }}>
+              <div className="text-4xl mb-4 text-[#026EC4]" style={{ fontWeight: 800 }}>
                 {formatCurrency(equity)}
               </div>
               <div className="flex items-center justify-between text-sm">
@@ -247,7 +247,7 @@ function EquityCalculator() {
             </div>
 
             <motion.button
-              className="w-full px-6 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-all"
+              className="w-full px-6 py-4 bg-[#026EC4] text-white rounded-xl shadow-lg hover:shadow-xl hover:bg-[#0ECEEO] transition-all"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               style={{ fontWeight: 600 }}
@@ -288,7 +288,7 @@ function PaymentCalculator() {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-3xl mb-8 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" style={{ fontWeight: 700 }}>
+        <h2 className="text-3xl mb-8 text-gray-900" style={{ fontWeight: 700 }}>
           Calculate Monthly Payments
         </h2>
 
@@ -351,18 +351,18 @@ function PaymentCalculator() {
           </h3>
 
           <div className="space-y-6">
-            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border-2 border-blue-200">
+            <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-[#026EC4]">
               <div className="text-sm text-gray-600 mb-2">Draw Period Payment</div>
               <div className="text-sm text-gray-500 mb-3">(Years 1-{drawPeriod} - Interest Only)</div>
-              <div className="text-4xl text-blue-600" style={{ fontWeight: 800 }}>
+              <div className="text-4xl text-[#026EC4]" style={{ fontWeight: 800 }}>
                 {formatCurrency(interestOnlyPayment)}/mo
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 border-2 border-purple-200">
+            <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-[#026EC4]">
               <div className="text-sm text-gray-600 mb-2">Repayment Period Payment</div>
               <div className="text-sm text-gray-500 mb-3">(Years {drawPeriod + 1}-{drawPeriod + repaymentPeriod} - Principal + Interest)</div>
-              <div className="text-4xl text-purple-600" style={{ fontWeight: 800 }}>
+              <div className="text-4xl text-[#026EC4]" style={{ fontWeight: 800 }}>
                 {formatCurrency(fullPayment)}/mo
               </div>
             </div>
@@ -486,22 +486,22 @@ function SavingsCalculator() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border-2 border-green-200">
+            <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-green-500">
               <div className="text-sm text-gray-600 mb-2">Monthly Savings</div>
               <div className="text-4xl text-green-600" style={{ fontWeight: 800 }}>
                 {formatCurrency(monthlySavings)}
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-6 border-2 border-purple-200">
+            <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-[#026EC4]">
               <div className="text-sm text-gray-600 mb-2">Annual Savings</div>
-              <div className="text-4xl bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent" style={{ fontWeight: 800 }}>
+              <div className="text-4xl text-[#026EC4]" style={{ fontWeight: 800 }}>
                 {formatCurrency(annualSavings)}
               </div>
             </div>
 
             <motion.button
-              className="w-full px-6 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-all"
+              className="w-full px-6 py-4 bg-[#026EC4] text-white rounded-xl shadow-lg hover:shadow-xl hover:bg-[#0ECEEO] transition-all"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               style={{ fontWeight: 600 }}

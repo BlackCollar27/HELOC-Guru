@@ -86,7 +86,7 @@ export function PartnersPage() {
   return (
     <div className="pt-20">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-600 text-white py-24 px-4 sm:px-6 lg:px-8">
+      <div className="bg-[#026EC4] text-white py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h1
             className="text-5xl sm:text-6xl mb-6"
@@ -108,6 +108,25 @@ export function PartnersPage() {
         </div>
       </div>
 
+      {/* Affiliate Disclosure */}
+      <div className="bg-yellow-50 border-b border-yellow-200 py-6 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-start gap-3">
+            <div className="flex-shrink-0 mt-1">
+              <Shield className="w-6 h-6 text-yellow-700" />
+            </div>
+            <div>
+              <h3 className="text-sm text-yellow-900 mb-2" style={{ fontWeight: 700 }}>
+                Affiliate Disclosure
+              </h3>
+              <p className="text-sm text-yellow-800">
+                <strong>Important:</strong> EquityKey is a free service for homeowners. We earn compensation from our lending partners when you successfully connect with them through our platform. This means we may receive a commission if you choose to work with one of the lenders featured below. However, our recommendations are based on comprehensive partner evaluation criteria, and we only work with reputable, licensed lenders. Your use of our service and any rates you receive are not affected by our affiliate relationships. All lenders shown meet our strict quality standards regardless of compensation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Selection Criteria */}
       <div className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
@@ -118,7 +137,7 @@ export function PartnersPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl sm:text-5xl mb-4 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" style={{ fontWeight: 700 }}>
+            <h2 className="text-4xl sm:text-5xl mb-4 text-gray-900" style={{ fontWeight: 700 }}>
               How We Select Partners
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -138,7 +157,7 @@ export function PartnersPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <div className="w-16 h-16 bg-[#026EC4] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                     <Icon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-xl mb-3 text-gray-900" style={{ fontWeight: 600 }}>
@@ -155,7 +174,7 @@ export function PartnersPage() {
       </div>
 
       {/* Partners Grid */}
-      <div className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
+      <div className="py-24 px-4 sm:px-6 lg:px-8 bg-cyan-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             className="text-center mb-16"
@@ -164,7 +183,7 @@ export function PartnersPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl sm:text-5xl mb-4 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" style={{ fontWeight: 700 }}>
+            <h2 className="text-4xl sm:text-5xl mb-4 text-gray-900" style={{ fontWeight: 700 }}>
               Featured Partners
             </h2>
             <p className="text-xl text-gray-600">
@@ -176,7 +195,7 @@ export function PartnersPage() {
             {partners.map((partner, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-200 hover:shadow-2xl transition-all"
+                className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -184,7 +203,7 @@ export function PartnersPage() {
                 whileHover={{ y: -5 }}
               >
                 {/* Header */}
-                <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-6 text-white">
+                <div className="bg-[#026EC4] p-6 text-white">
                   <h3 className="text-2xl mb-2" style={{ fontWeight: 700 }}>
                     {partner.name}
                   </h3>
@@ -220,7 +239,7 @@ export function PartnersPage() {
 
                   <div className="mb-6">
                     <div className="text-xs text-gray-500 mb-1">APR From</div>
-                    <div className="text-3xl bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent" style={{ fontWeight: 800 }}>
+                    <div className="text-3xl text-[#026EC4]" style={{ fontWeight: 800 }}>
                       {partner.aprFrom}
                     </div>
                   </div>
@@ -239,7 +258,7 @@ export function PartnersPage() {
                     </ul>
                   </div>
 
-                  <div className="bg-purple-50 rounded-xl p-4 mb-6">
+                  <div className="bg-cyan-50 rounded-xl p-4 mb-6">
                     <div className="text-xs text-gray-600 mb-1" style={{ fontWeight: 600 }}>
                       Best For:
                     </div>
@@ -249,7 +268,7 @@ export function PartnersPage() {
                   </div>
 
                   <motion.button
-                    className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
+                    className="w-full px-6 py-3 bg-[#026EC4] text-white rounded-xl shadow-lg hover:shadow-xl hover:bg-[#0ECEEO] transition-all flex items-center justify-center gap-2"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     style={{ fontWeight: 600 }}
@@ -273,21 +292,24 @@ export function PartnersPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <TrendingUp className="w-16 h-16 text-purple-600 mx-auto mb-6" />
-            <h2 className="text-4xl sm:text-5xl mb-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent" style={{ fontWeight: 700 }}>
+            <TrendingUp className="w-16 h-16 text-[#026EC4] mx-auto mb-6" />
+            <h2 className="text-4xl sm:text-5xl mb-6 text-gray-900" style={{ fontWeight: 700 }}>
               Get Matched With The Right Partner
             </h2>
             <p className="text-xl text-gray-600 mb-8">
               Answer a few quick questions and we'll recommend the best HELOC options for your unique situation
             </p>
             <motion.button
-              className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full text-lg shadow-lg hover:shadow-xl transition-all"
+              className="px-8 py-4 bg-[#026EC4] text-white rounded-full text-lg shadow-lg hover:shadow-xl hover:bg-[#0ECEEO] transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               style={{ fontWeight: 600 }}
             >
               Find My Perfect Match
             </motion.button>
+            <p className="text-sm text-gray-500 mt-6">
+              <strong>Disclosure:</strong> EquityKey earns commission from partner lenders when you connect through our service. This does not affect your rates or loan terms.
+            </p>
           </motion.div>
         </div>
       </div>

@@ -36,7 +36,7 @@ const partners = [
 
 export function TrustSection() {
   return (
-    <div className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50">
+    <div className="py-24 px-4 sm:px-6 lg:px-8 bg-cyan-50">
       <div className="max-w-7xl mx-auto">
         {/* Stats */}
         <motion.div
@@ -58,9 +58,9 @@ export function TrustSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
               >
-                <div className="bg-white rounded-2xl p-6 shadow-xl border border-white/50">
-                  <Icon className="w-8 h-8 text-purple-600 mx-auto mb-3" />
-                  <div className="text-3xl sm:text-4xl mb-2 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent" style={{ fontWeight: 800 }}>
+                <div className="bg-white rounded-2xl p-6 shadow-xl">
+                  <Icon className="w-8 h-8 text-[#026EC4] mx-auto mb-3" />
+                  <div className="text-3xl sm:text-4xl mb-2 text-[#026EC4]" style={{ fontWeight: 800 }}>
                     {stat.value}
                   </div>
                   <div className="text-sm text-gray-600" style={{ fontWeight: 500 }}>
@@ -83,7 +83,7 @@ export function TrustSection() {
           <h3 className="text-2xl mb-8 text-gray-700" style={{ fontWeight: 600 }}>
             Trusted Lending Partners
           </h3>
-          <div className="bg-white rounded-3xl p-8 shadow-xl border border-white/50">
+          <div className="bg-white rounded-3xl p-8 shadow-xl">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
               {partners.map((partner, index) => (
                 <motion.div
@@ -131,7 +131,7 @@ export function TrustSection() {
           ].map((testimonial, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-2xl p-6 shadow-lg border border-white/50"
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
