@@ -88,6 +88,14 @@ export function Footer({ onNavigate }: FooterProps) {
               <ul className="space-y-3 pb-4">
                 <li>
                   <button
+                    onClick={() => handleNavigate('how-we-select')}
+                    className="text-gray-600 hover:text-[#026EC4] transition-colors"
+                  >
+                    How We Select Partners
+                  </button>
+                </li>
+                <li>
+                  <button
                     onClick={() => handleNavigate('contact')}
                     className="text-gray-600 hover:text-[#026EC4] transition-colors"
                   >
@@ -141,6 +149,14 @@ export function Footer({ onNavigate }: FooterProps) {
               Company
             </h3>
             <ul className="space-y-3">
+              <li>
+                <button
+                  onClick={() => handleNavigate('how-we-select')}
+                  className="text-gray-600 hover:text-[#026EC4] transition-colors"
+                >
+                  How We Select Partners
+                </button>
+              </li>
               <li>
                 <button
                   onClick={() => handleNavigate('contact')}

@@ -9,6 +9,7 @@ import { CalculatorsPage } from './components/pages/CalculatorsPage';
 import { PartnersPage } from './components/pages/PartnersPage';
 import { SurveyPage } from './components/pages/SurveyPage';
 import { ResultsPage } from './components/pages/ResultsPage';
+import { HowWeSelectPage } from './components/pages/HowWeSelectPage';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -28,6 +29,8 @@ export default function App() {
         return <CalculatorsPage />;
       case 'partners':
         return <PartnersPage onNavigate={setCurrentPage} />;
+      case 'how-we-select':
+        return <HowWeSelectPage />;
       case 'survey':
         return <SurveyPage onNavigate={setCurrentPage} onSubmit={(data) => {
           setSurveyData(data);
