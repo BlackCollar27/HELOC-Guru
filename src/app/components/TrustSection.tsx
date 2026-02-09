@@ -82,7 +82,7 @@ export function TrustSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="mb-8 text-gray-700 text-[40px]" style={{ fontWeight: 700 }}>
+          <h3 className="mb-8 text-[#000000] text-[48px]" style={{ fontWeight: 700 }}>
             Trusted Lending Partners
           </h3>
           <div className="bg-white rounded-3xl p-8 shadow-xl overflow-hidden">

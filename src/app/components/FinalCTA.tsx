@@ -49,14 +49,14 @@ export function FinalCTA({ onNavigate }: FinalCTAProps) {
           transition={{ duration: 0.6 }}
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-8"
+            className="mb-8"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <Sparkles className="w-4 h-4 text-white" />
-            <span className="text-white text-[24px]">Start Your Journey Today</span>
+            
+            <span className="text-black font-bold text-[48px]">Start Your Journey Today</span>
           </motion.div>
 
           

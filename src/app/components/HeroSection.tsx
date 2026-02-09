@@ -8,7 +8,7 @@ interface HeroSectionProps {
 
 export function HeroSection({ onNavigate }: HeroSectionProps) {
   return (
-    <div className="relative overflow-hidden bg-white px-[0px] pt-[120px] pb-[0px] bg-[#ecfeff]">
+    <div className="relative overflow-hidden px-[0px] pt-[120px] pb-[0px] bg-[#ECFEFF]">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
           {/* Text Content */}
