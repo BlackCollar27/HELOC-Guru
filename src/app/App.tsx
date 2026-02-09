@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { HomePage } from './components/pages/HomePage';
@@ -10,10 +10,26 @@ import { PartnersPage } from './components/pages/PartnersPage';
 import { SurveyPage } from './components/pages/SurveyPage';
 import { ResultsPage } from './components/pages/ResultsPage';
 import { HowWeSelectPage } from './components/pages/HowWeSelectPage';
+import favicon from 'figma:asset/8a4e280046d55d21a284fa4e9c51b8b4377d13e6.png';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [surveyData, setSurveyData] = useState(null);
+
+  // Set favicon and page title
+  useEffect(() => {
+    // Set favicon
+    const link = document.querySelector("link[rel~='icon']") as HTMLLinkElement || document.createElement('link');
+    link.type = 'image/png';
+    link.rel = 'icon';
+    link.href = favicon;
+    if (!document.querySelector("link[rel~='icon']")) {
+      document.head.appendChild(link);
+    }
+
+    // Set page title
+    document.title = 'HELOC Guru - Unlock Your Home Equity';
+  }, []);
 
   const renderPage = () => {
     switch (currentPage) {
