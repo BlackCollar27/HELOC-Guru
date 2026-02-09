@@ -14,9 +14,7 @@ const navItems = [
   { id: 'home', label: 'Home' },
   { id: 'why-helocs', label: 'Why HELOCs' },
   { id: 'calculators', label: 'Calculators' },
-  { id: 'partners', label: 'Top Partners' },
-  { id: 'about', label: 'About Us' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'partners', label: 'Lending Partners' },
 ];
 
 export function Header({ currentPage, onNavigate }: HeaderProps) {

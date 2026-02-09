@@ -89,7 +89,7 @@ export function AboutPage() {
               Our Mission
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed">
-              Most homeowners don't realize they're sitting on a financial goldmine. We founded EquityKey 
+              Most homeowners don't realize they're sitting on a financial goldmine. We founded HELOC Guru 
               because we believe accessing your home equity should be simple, transparent, and empowering—not 
               confusing and intimidating like traditional lending.
             </p>
@@ -108,7 +108,7 @@ export function AboutPage() {
                 Our Story
               </h3>
               <p className="text-gray-700">
-                Founded in 2020, EquityKey was born from the frustration of seeing friends and family 
+                Founded in 2020, HELOC Guru was born from the frustration of seeing friends and family 
                 struggle with high-interest debt while sitting on substantial home equity. We knew there 
                 had to be a better way.
               </p>

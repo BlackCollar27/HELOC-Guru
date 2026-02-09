@@ -2,6 +2,10 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { TrendingDown, CreditCard, DollarSign, Shield, BarChart3, Clock, CheckCircle2, XCircle } from 'lucide-react';
 
+interface WhyHELOCsPageProps {
+  onNavigate?: (page: string) => void;
+}
+
 const advantages = [
   {
     icon: TrendingDown,
@@ -77,7 +81,7 @@ const comparison = {
   },
 };
 
-export function WhyHELOCsPage() {
+export function WhyHELOCsPage({ onNavigate }: WhyHELOCsPageProps) {
   return (
     <div className="pt-32">
       {/* Hero */}
@@ -235,6 +239,7 @@ export function WhyHELOCsPage() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               style={{ fontWeight: 600 }}
+              onClick={() => onNavigate && onNavigate('calculators')}
             >
               Calculate My Equity
             </motion.button>

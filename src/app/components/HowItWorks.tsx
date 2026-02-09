@@ -5,7 +5,7 @@ import { ClipboardCheck, Search, Handshake, DollarSign } from 'lucide-react';
 const steps = [
   {
     icon: ClipboardCheck,
-    title: 'Share Your Details',
+    title: 'Share A Few Details',
     description: 'Tell us about your home and financial goals in 60 seconds.',
     delay: 0.1,
   },

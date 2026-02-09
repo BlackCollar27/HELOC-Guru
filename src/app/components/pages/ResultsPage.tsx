@@ -215,64 +215,14 @@ export function ResultsPage({ onNavigate, surveyData }: ResultsPageProps) {
         </div>
       </div>
 
-      {/* Your Equity Summary */}
+      {/* Main Content */}
       <div className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="bg-white rounded-3xl p-8 shadow-xl mb-12"
-          >
-            <h2 className="text-2xl mb-6 text-gray-900" style={{ fontWeight: 700 }}>
-              Your Equity Summary
-            </h2>
-            
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="text-center p-6 bg-cyan-50 rounded-2xl">
-                <Home className="w-8 h-8 text-[#026EC4] mx-auto mb-3" />
-                <div className="text-sm text-gray-600 mb-2">Home Value</div>
-                <div className="text-3xl text-gray-900" style={{ fontWeight: 700 }}>
-                  {formatCurrency(homeValue)}
-                </div>
-              </div>
-              
-              <div className="text-center p-6 bg-cyan-50 rounded-2xl">
-                <TrendingUp className="w-8 h-8 text-[#026EC4] mx-auto mb-3" />
-                <div className="text-sm text-gray-600 mb-2">Total Equity</div>
-                <div className="text-3xl text-gray-900" style={{ fontWeight: 700 }}>
-                  {formatCurrency(equity)}
-                </div>
-                <div className="text-xs text-gray-500 mt-1">LTV: {ltv}%</div>
-              </div>
-              
-              <div className="text-center p-6 bg-white rounded-2xl border-2 border-green-500">
-                <DollarSign className="w-8 h-8 text-green-600 mx-auto mb-3" />
-                <div className="text-sm text-gray-600 mb-2">Available Cash</div>
-                <div className="text-3xl text-green-600" style={{ fontWeight: 800 }}>
-                  {formatCurrency(availableCash)}
-                </div>
-                <div className="text-xs text-gray-500 mt-1">Up to 85% LTV</div>
-              </div>
-            </div>
-
-            <div className="mt-6 p-4 bg-blue-50 rounded-xl border border-blue-200">
-              <div className="flex items-start gap-3">
-                <Award className="w-5 h-5 text-[#026EC4] mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-sm text-gray-700">
-                    <strong>Your Goals:</strong> {surveyData.useOfFunds} • <strong>Timeframe:</strong> {surveyData.timeframe}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
           {/* Personalized Recommendations */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
           >
             <div className="text-center mb-12">
               <h2 className="text-4xl mb-4 text-gray-900" style={{ fontWeight: 700 }}>
@@ -292,7 +242,7 @@ export function ResultsPage({ onNavigate, surveyData }: ResultsPageProps) {
                   }`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                  transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                   whileHover={{ y: -5 }}
                 >
                   {index === 0 && (
@@ -366,10 +316,10 @@ export function ResultsPage({ onNavigate, surveyData }: ResultsPageProps) {
 
             {/* View All Partners CTA */}
             <motion.div
-              className="bg-white rounded-3xl p-12 shadow-xl text-center"
+              className="bg-white rounded-3xl p-12 shadow-xl text-center mb-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
             >
               <TrendingUp className="w-16 h-16 text-[#026EC4] mx-auto mb-6" />
               <h3 className="text-3xl mb-4 text-gray-900" style={{ fontWeight: 700 }}>
@@ -389,13 +339,56 @@ export function ResultsPage({ onNavigate, surveyData }: ResultsPageProps) {
                 <ArrowRight className="w-5 h-5" />
               </motion.button>
             </motion.div>
+          </motion.div>
 
-            {/* Disclaimer */}
-            <div className="mt-8 p-6 bg-yellow-50 rounded-2xl border border-yellow-200">
-              <p className="text-sm text-yellow-900 text-center">
-                <strong>Important:</strong> These are personalized recommendations based on your profile. Actual rates and terms may vary and are subject to credit approval. 
-                EquityKey earns commission from partner lenders. Your application does not affect your credit score.
-              </p>
+          {/* Your Equity Summary - Now Below Recommendations */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+            className="bg-white rounded-3xl p-8 shadow-xl"
+          >
+            <h2 className="text-2xl mb-6 text-gray-900" style={{ fontWeight: 700 }}>
+              Your Equity Summary
+            </h2>
+            
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="text-center p-6 bg-cyan-50 rounded-2xl">
+                <Home className="w-8 h-8 text-[#026EC4] mx-auto mb-3" />
+                <div className="text-sm text-gray-600 mb-2">Home Value</div>
+                <div className="text-3xl text-gray-900" style={{ fontWeight: 700 }}>
+                  {formatCurrency(homeValue)}
+                </div>
+              </div>
+              
+              <div className="text-center p-6 bg-cyan-50 rounded-2xl">
+                <TrendingUp className="w-8 h-8 text-[#026EC4] mx-auto mb-3" />
+                <div className="text-sm text-gray-600 mb-2">Total Equity</div>
+                <div className="text-3xl text-gray-900" style={{ fontWeight: 700 }}>
+                  {formatCurrency(equity)}
+                </div>
+                <div className="text-xs text-gray-500 mt-1">LTV: {ltv}%</div>
+              </div>
+              
+              <div className="text-center p-6 bg-white rounded-2xl border-2 border-green-500">
+                <DollarSign className="w-8 h-8 text-green-600 mx-auto mb-3" />
+                <div className="text-sm text-gray-600 mb-2">Available Cash</div>
+                <div className="text-3xl text-green-600" style={{ fontWeight: 800 }}>
+                  {formatCurrency(availableCash)}
+                </div>
+                <div className="text-xs text-gray-500 mt-1">Up to 85% LTV</div>
+              </div>
+            </div>
+
+            <div className="mt-6 p-4 bg-blue-50 rounded-xl border border-blue-200">
+              <div className="flex items-start gap-3">
+                <Award className="w-5 h-5 text-[#026EC4] mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-sm text-gray-700">
+                    <strong>Your Goals:</strong> {surveyData.useOfFunds} • <strong>Timeframe:</strong> {surveyData.timeframe}
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -549,7 +542,7 @@ export function ResultsPage({ onNavigate, surveyData }: ResultsPageProps) {
                         <a href="#" className="text-[#026EC4] hover:text-[#0ECEEO] underline">
                           Privacy Policy
                         </a>
-                        . You consent to receive calls and texts from {selectedPartner} at the number provided, including via automated technology. EquityKey earns commission from partner lenders.
+                        . You consent to receive calls and texts from {selectedPartner} at the number provided, including via automated technology. HELOC Guru earns commission from partner lenders.
                       </p>
                     </div>
 

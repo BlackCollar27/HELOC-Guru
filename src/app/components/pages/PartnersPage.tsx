@@ -125,23 +125,7 @@ export function PartnersPage({ onNavigate }: { onNavigate: (page: string) => voi
       </div>
 
       {/* Affiliate Disclosure */}
-      <div className="bg-yellow-50 border-b border-yellow-200 py-6 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-start gap-3">
-            <div className="flex-shrink-0 mt-1">
-              <Shield className="w-6 h-6 text-yellow-700" />
-            </div>
-            <div>
-              <h3 className="text-sm text-yellow-900 mb-2" style={{ fontWeight: 700 }}>
-                Affiliate Disclosure
-              </h3>
-              <p className="text-sm text-yellow-800">
-                <strong>Important:</strong> EquityKey is a free service for homeowners. We earn compensation from our lending partners when you successfully connect with them through our platform. This means we may receive a commission if you choose to work with one of the lenders featured below. However, our recommendations are based on comprehensive partner evaluation criteria, and we only work with reputable, licensed lenders. Your use of our service and any rates you receive are not affected by our affiliate relationships. All lenders shown meet our strict quality standards regardless of compensation.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
       {/* Selection Criteria */}
       <div className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
@@ -328,7 +312,7 @@ export function PartnersPage({ onNavigate }: { onNavigate: (page: string) => voi
               Find My Perfect Match
             </motion.button>
             <p className="text-sm text-gray-500 mt-6">
-              <strong>Disclosure:</strong> EquityKey earns commission from partner lenders when you connect through our service. This does not affect your rates or loan terms.
+              <strong>Disclosure:</strong> HELOC Guru earns commission from partner lenders when you connect through our service. This does not affect your rates or loan terms.
             </p>
           </motion.div>
         </div>

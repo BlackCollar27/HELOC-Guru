@@ -226,13 +226,33 @@ function Step1({ formData, updateFormData, onNext, step, totalSteps }: StepProps
             ))}
           </div>
         </div>
+
+        <div>
+          <label className="block text-sm text-gray-700 mb-2" style={{ fontWeight: 600 }}>
+            Property Zip Code *
+          </label>
+          <input
+            type="text"
+            placeholder="Enter 5-digit zip code"
+            value={formData.zipCode}
+            onChange={(e) => {
+              const value = e.target.value.replace(/\D/g, '').slice(0, 5);
+              updateFormData('zipCode', value);
+            }}
+            className="w-full px-4 py-3 rounded-xl border-2 border-gray-300 focus:border-[#026EC4] focus:outline-none transition-all"
+            maxLength={5}
+          />
+          <p className="text-xs text-gray-500 mt-2">
+            We use this to match you with lenders operating in your state
+          </p>
+        </div>
       </div>
 
       <motion.button
         onClick={onNext}
-        disabled={!formData.homeValue || !formData.mortgageBalance || !formData.propertyType}
+        disabled={!formData.homeValue || !formData.mortgageBalance || !formData.propertyType || !formData.zipCode || formData.zipCode.length !== 5}
         className="w-full mt-8 px-6 py-4 bg-[#026EC4] text-white rounded-xl shadow-lg hover:shadow-xl hover:bg-[#0ECEEO] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-        whileHover={{ scale: formData.homeValue && formData.mortgageBalance && formData.propertyType ? 1.02 : 1 }}
+        whileHover={{ scale: formData.homeValue && formData.mortgageBalance && formData.propertyType && formData.zipCode && formData.zipCode.length === 5 ? 1.02 : 1 }}
         whileTap={{ scale: 0.98 }}
         style={{ fontWeight: 600 }}
       >

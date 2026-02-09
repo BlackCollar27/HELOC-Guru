@@ -19,7 +19,7 @@ export default function App() {
       case 'home':
         return <HomePage onNavigate={setCurrentPage} />;
       case 'why-helocs':
-        return <WhyHELOCsPage />;
+        return <WhyHELOCsPage onNavigate={setCurrentPage} />;
       case 'about':
         return <AboutPage />;
       case 'contact':
