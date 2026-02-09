@@ -6,27 +6,18 @@ export function CalculatorsPage() {
   const [activeCalculator, setActiveCalculator] = useState<'equity' | 'payment' | 'savings'>('equity');
 
   return (
-    <div className="pt-20">
+    <div className="pt-32">
       {/* Hero */}
-      <div className="bg-[#026EC4] text-white py-24 px-4 sm:px-6 lg:px-8">
+      <div className="bg-[#026EC4] text-white px-[32px] py-[50px]">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            className="inline-block p-4 bg-white/20 backdrop-blur-sm rounded-2xl mb-6"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Calculator className="w-12 h-12 text-white" />
-          </motion.div>
+          
           <motion.h1
             className="text-5xl sm:text-6xl mb-6"
             style={{ fontWeight: 700 }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-          >
-            Calculators & Tools
-          </motion.h1>
+          >Calculators</motion.h1>
           <motion.p
             className="text-xl text-white/90"
             initial={{ opacity: 0, y: 20 }}
@@ -54,7 +45,7 @@ export function CalculatorsPage() {
                   onClick={() => setActiveCalculator(tab.id)}
                   className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all ${
                     activeCalculator === tab.id
-                      ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg'
+                      ? 'bg-[#026EC4] text-white shadow-lg'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                   whileHover={{ scale: 1.05 }}

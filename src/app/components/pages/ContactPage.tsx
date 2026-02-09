@@ -25,9 +25,9 @@ export function ContactPage() {
   };
 
   return (
-    <div className="pt-20">
+    <div className="pt-32">
       {/* Hero */}
-      <div className="bg-[#026EC4] text-white py-24 px-4 sm:px-6 lg:px-8">
+      <div className="bg-[#026EC4] text-white px-[32px] py-[50px]">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h1
             className="text-5xl sm:text-6xl mb-6"

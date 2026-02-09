@@ -50,9 +50,9 @@ const team = [
 
 export function AboutPage() {
   return (
-    <div className="pt-20">
+    <div className="pt-32">
       {/* Hero */}
-      <div className="bg-[#026EC4] text-white py-24 px-4 sm:px-6 lg:px-8">
+      <div className="bg-[#026EC4] text-white px-[32px] py-[50px]">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h1
             className="text-5xl sm:text-6xl mb-6"
@@ -60,9 +60,7 @@ export function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-          >
-            About EquityKey
-          </motion.h1>
+          >About Us</motion.h1>
           <motion.p
             className="text-xl text-white/90"
             initial={{ opacity: 0, y: 20 }}
@@ -178,52 +176,7 @@ export function AboutPage() {
       </div>
 
       {/* Team */}
-      <div className="py-24 px-4 sm:px-6 lg:px-8 bg-cyan-50">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl sm:text-5xl mb-4 text-gray-900" style={{ fontWeight: 700 }}>
-              Meet Our Team
-            </h2>
-            <p className="text-xl text-gray-600">
-              Experienced leaders from fintech and lending
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <motion.div
-                key={index}
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <div className="w-32 h-32 bg-[#026EC4] rounded-full mx-auto mb-4 flex items-center justify-center shadow-xl">
-                  <span className="text-4xl text-white" style={{ fontWeight: 700 }}>
-                    {member.name.split(' ').map(n => n[0]).join('')}
-                  </span>
-                </div>
-                <h3 className="text-xl mb-1 text-gray-900" style={{ fontWeight: 600 }}>
-                  {member.name}
-                </h3>
-                <div className="text-[#026EC4] mb-3" style={{ fontWeight: 600 }}>
-                  {member.role}
-                </div>
-                <p className="text-sm text-gray-600">
-                  {member.bio}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
+      
 
       {/* Stats */}
       <div className="py-24 px-4 sm:px-6 lg:px-8 bg-[#026EC4] text-white">

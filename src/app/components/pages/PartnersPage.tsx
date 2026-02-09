@@ -4,6 +4,16 @@ import { Award, Shield, TrendingUp, Users, Star, CheckCircle2, ExternalLink } fr
 
 const partners = [
   {
+    name: 'Figure',
+    rating: 4.8,
+    minLoan: '$15,000',
+    maxLoan: '$400,000',
+    aprFrom: '6.49%',
+    features: ['100% online process', 'Fast 5-day funding', 'No appraisal required'],
+    bestFor: 'Tech-savvy homeowners seeking speed',
+    url: 'https://www.figure.com/',
+  },
+  {
     name: 'Wells Fargo',
     rating: 4.8,
     minLoan: '$25,000',
@@ -11,6 +21,7 @@ const partners = [
     aprFrom: '6.99%',
     features: ['No closing costs', 'Online account management', 'Relationship discounts'],
     bestFor: 'Existing customers and large loan amounts',
+    url: 'https://www.wellsfargo.com/home-equity/',
   },
   {
     name: 'Bank of America',
@@ -20,6 +31,7 @@ const partners = [
     aprFrom: '7.25%',
     features: ['Preferred Rewards discounts', 'Mobile app access', 'No annual fee'],
     bestFor: 'Rewards program members',
+    url: 'https://www.bankofamerica.com/home-loans/home-equity-loans/',
   },
   {
     name: 'Chase',
@@ -29,6 +41,7 @@ const partners = [
     aprFrom: '7.15%',
     features: ['Fast approval process', 'Premier banking benefits', 'Rate lock options'],
     bestFor: 'Quick funding needs',
+    url: 'https://www.chase.com/personal/home-equity',
   },
   {
     name: 'US Bank',
@@ -38,6 +51,7 @@ const partners = [
     aprFrom: '7.40%',
     features: ['Lower minimum loan', 'Flexible terms', 'Free financial planning'],
     bestFor: 'Smaller loan amounts and financial guidance',
+    url: 'https://www.usbank.com/home-loans/home-equity-loans-and-lines-of-credit.html',
   },
   {
     name: 'PNC Bank',
@@ -47,6 +61,7 @@ const partners = [
     aprFrom: '7.30%',
     features: ['Virtual wallet integration', 'No prepayment penalty', 'Customer support 24/7'],
     bestFor: 'Digital-first experience',
+    url: 'https://www.pnc.com/en/personal-banking/borrowing/home-lending/home-equity.html',
   },
   {
     name: 'Regions Bank',
@@ -56,6 +71,7 @@ const partners = [
     aprFrom: '7.50%',
     features: ['Lowest minimum loan', 'Regional expertise', 'Personalized service'],
     bestFor: 'First-time HELOC borrowers',
+    url: 'https://www.regions.com/personal-banking/loans/home-equity-line-of-credit',
   },
 ];
 
@@ -82,11 +98,11 @@ const selectionCriteria = [
   },
 ];
 
-export function PartnersPage() {
+export function PartnersPage({ onNavigate }: { onNavigate: (page: string) => void }) {
   return (
-    <div className="pt-20">
+    <div className="pt-32">
       {/* Hero */}
-      <div className="bg-[#026EC4] text-white py-24 px-4 sm:px-6 lg:px-8">
+      <div className="bg-[#026EC4] text-white px-[32px] py-[50px]">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h1
             className="text-5xl sm:text-6xl mb-6"
@@ -267,7 +283,10 @@ export function PartnersPage() {
                     </div>
                   </div>
 
-                  <motion.button
+                  <motion.a
+                    href={partner.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-full px-6 py-3 bg-[#026EC4] text-white rounded-xl shadow-lg hover:shadow-xl hover:bg-[#0ECEEO] transition-all flex items-center justify-center gap-2"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -275,7 +294,7 @@ export function PartnersPage() {
                   >
                     View Rates
                     <ExternalLink className="w-4 h-4" />
-                  </motion.button>
+                  </motion.a>
                 </div>
               </motion.div>
             ))}
@@ -304,6 +323,7 @@ export function PartnersPage() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               style={{ fontWeight: 600 }}
+              onClick={() => onNavigate('survey')}
             >
               Find My Perfect Match
             </motion.button>

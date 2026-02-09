@@ -27,7 +27,7 @@ export default function App() {
       case 'calculators':
         return <CalculatorsPage />;
       case 'partners':
-        return <PartnersPage />;
+        return <PartnersPage onNavigate={setCurrentPage} />;
       case 'survey':
         return <SurveyPage onNavigate={setCurrentPage} onSubmit={(data) => {
           setSurveyData(data);

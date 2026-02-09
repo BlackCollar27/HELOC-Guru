@@ -179,7 +179,7 @@ export function ResultsPage({ onNavigate, surveyData }: ResultsPageProps) {
   };
 
   return (
-    <div className="pt-20 min-h-screen bg-cyan-50">
+    <div className="pt-32 min-h-screen bg-cyan-50">
       {/* Success Header */}
       <div className="bg-[#026EC4] text-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">

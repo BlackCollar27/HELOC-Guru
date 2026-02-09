@@ -56,12 +56,10 @@ export function FinalCTA({ onNavigate }: FinalCTAProps) {
             transition={{ delay: 0.2 }}
           >
             <Sparkles className="w-4 h-4 text-white" />
-            <span className="text-sm text-white">Start Your Journey Today</span>
+            <span className="text-white text-[24px]">Start Your Journey Today</span>
           </motion.div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl text-white mb-6" style={{ fontWeight: 700, lineHeight: 1.2 }}>
-            Ready to Unlock Your<br />Home's Hidden Value?
-          </h2>
+          
 
           <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
             Join thousands of homeowners who've discovered financial freedom through their home equity.
@@ -74,10 +72,7 @@ export function FinalCTA({ onNavigate }: FinalCTAProps) {
               whileTap={{ scale: 0.95 }}
               onClick={() => onNavigate('survey')}
               style={{ fontWeight: 600 }}
-            >
-              Get Your Free Equity Report
-              <ArrowRight className="inline-block w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
+            >Shop Rates<ArrowRight className="inline-block w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" /></motion.button>
 
             
           </div>

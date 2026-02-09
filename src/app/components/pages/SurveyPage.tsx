@@ -10,8 +10,8 @@ interface SurveyPageProps {
 export function SurveyPage({ onNavigate, onSubmit }: SurveyPageProps) {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    homeValue: '500000',
-    mortgageBalance: '250000',
+    homeValue: 500000,
+    mortgageBalance: 250000,
     creditScore: '',
     propertyType: '',
     useOfFunds: '',
@@ -169,10 +169,7 @@ function Step1({ formData, updateFormData, onNext, step, totalSteps }: StepProps
             step="10000"
             value={homeValue}
             onChange={(e) => updateFormData('homeValue', e.target.value)}
-            className="w-full h-3 bg-gradient-to-r from-purple-200 to-blue-200 rounded-full appearance-none cursor-pointer slider"
-            style={{
-              background: `linear-gradient(to right, rgb(2 110 196) 0%, rgb(14 206 224) ${((homeValue - 100000) / (2000000 - 100000)) * 100}%, rgb(226 232 240) ${((homeValue - 100000) / (2000000 - 100000)) * 100}%, rgb(226 232 240) 100%)`
-            }}
+            className="w-full h-3 bg-gray-200 rounded-full appearance-none cursor-pointer"
           />
           <div className="flex justify-between text-xs text-gray-500 mt-2">
             <span>$100K</span>
@@ -196,10 +193,7 @@ function Step1({ formData, updateFormData, onNext, step, totalSteps }: StepProps
             step="5000"
             value={mortgageBalance}
             onChange={(e) => updateFormData('mortgageBalance', e.target.value)}
-            className="w-full h-3 bg-gradient-to-r from-purple-200 to-blue-200 rounded-full appearance-none cursor-pointer slider"
-            style={{
-              background: `linear-gradient(to right, rgb(2 110 196) 0%, rgb(14 206 224) ${(mortgageBalance / (homeValue * 0.9)) * 100}%, rgb(226 232 240) ${(mortgageBalance / (homeValue * 0.9)) * 100}%, rgb(226 232 240) 100%)`
-            }}
+            className="w-full h-3 bg-gray-200 rounded-full appearance-none cursor-pointer"
           />
           <div className="flex justify-between text-xs text-gray-500 mt-2">
             <span>$0</span>
@@ -245,40 +239,6 @@ function Step1({ formData, updateFormData, onNext, step, totalSteps }: StepProps
         Continue
         <ArrowRight className="w-5 h-5" />
       </motion.button>
-
-      <style>{`
-        .slider::-webkit-slider-thumb {
-          appearance: none;
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          background: #026EC4;
-          cursor: pointer;
-          box-shadow: 0 2px 8px rgba(2, 110, 196, 0.5);
-          transition: all 0.2s;
-        }
-
-        .slider::-webkit-slider-thumb:hover {
-          transform: scale(1.2);
-          box-shadow: 0 4px 12px rgba(2, 110, 196, 0.6);
-        }
-
-        .slider::-moz-range-thumb {
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          background: #026EC4;
-          cursor: pointer;
-          border: none;
-          box-shadow: 0 2px 8px rgba(2, 110, 196, 0.5);
-          transition: all 0.2s;
-        }
-
-        .slider::-moz-range-thumb:hover {
-          transform: scale(1.2);
-          box-shadow: 0 4px 12px rgba(2, 110, 196, 0.6);
-        }
-      `}</style>
     </motion.div>
   );
 }
@@ -398,7 +358,7 @@ function Step2({ formData, updateFormData, onNext, onBack, step, totalSteps }: S
         <motion.button
           onClick={onNext}
           disabled={!formData.useOfFunds || !formData.timeframe}
-          className="flex-1 px-6 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="flex-1 px-6 py-4 bg-[#026EC4] text-white rounded-xl shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           whileHover={{ scale: formData.useOfFunds && formData.timeframe ? 1.02 : 1 }}
           whileTap={{ scale: 0.98 }}
           style={{ fontWeight: 600 }}
@@ -504,7 +464,7 @@ function Step3({ formData, updateFormData, onNext, onBack, step, totalSteps }: S
         <motion.button
           onClick={onNext}
           disabled={!formData.creditScore}
-          className="flex-1 px-6 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="flex-1 px-6 py-4 bg-[#026EC4] text-white rounded-xl shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           whileHover={{ scale: formData.creditScore ? 1.02 : 1 }}
           whileTap={{ scale: 0.98 }}
           style={{ fontWeight: 600 }}

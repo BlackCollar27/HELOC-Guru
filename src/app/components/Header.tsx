@@ -40,16 +40,12 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/80 backdrop-blur-xl shadow-lg border-b border-gray-200' 
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${ isScrolled ? 'bg-white/80 backdrop-blur-xl shadow-lg border-b border-gray-200' : 'bg-transparent' } px-[0px] py-[5px]`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-[32px] py-[15px]">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <motion.button
@@ -58,7 +54,11 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <img src={logo} alt="HELOC Guru" className="h-[70px]" />
+            <img 
+              src={logo} 
+              alt="HELOC Guru" 
+              className={`transition-all duration-300 ${ isScrolled ? 'h-[77px] md:h-[64px]' : 'h-[100px] md:h-[70px]' } m-[0px]`} 
+            />
           </motion.button>
 
           {/* Desktop Navigation */}

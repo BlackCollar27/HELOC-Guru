@@ -1,7 +1,7 @@
 
-  # Interactive Fintech Website Design
+  # HELOC Guru
 
-  This is a code bundle for Interactive Fintech Website Design. The original project is available at https://www.figma.com/design/xtODpiZxZmHfu5sgS8Bgu6/Interactive-Fintech-Website-Design.
+  This is a code bundle for HELOC Guru. The original project is available at https://www.figma.com/design/xtODpiZxZmHfu5sgS8Bgu6/HELOC-Guru.
 
   ## Running the code
 
