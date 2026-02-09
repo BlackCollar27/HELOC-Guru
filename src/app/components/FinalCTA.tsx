@@ -8,7 +8,7 @@ interface FinalCTAProps {
 
 export function FinalCTA({ onNavigate }: FinalCTAProps) {
   return (
-    <div className="py-24 px-4 sm:px-6 lg:px-8 bg-[#026EC4] relative overflow-hidden">
+    <div className="py-24 px-4 sm:px-6 lg:px-8 bg-[#ECFEFF] relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -61,13 +61,13 @@ export function FinalCTA({ onNavigate }: FinalCTAProps) {
 
           
 
-          <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-700 mb-10 max-w-2xl mx-auto">
             Join thousands of homeowners who've discovered financial freedom through their home equity.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.button
-              className="px-8 py-4 bg-white text-[#026EC4] rounded-full text-lg shadow-2xl hover:shadow-3xl hover:bg-gray-50 transition-all group"
+              className="px-8 py-4 bg-[#026EC4] text-white rounded-full text-lg shadow-2xl hover:shadow-3xl hover:bg-[#0159a3] transition-all group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => onNavigate('survey')}
@@ -77,7 +77,7 @@ export function FinalCTA({ onNavigate }: FinalCTAProps) {
             
           </div>
 
-          <p className="text-sm text-white/70 mt-8">
+          <p className="text-sm text-gray-600 mt-8">
             No credit check required • Takes less than 60 seconds • 100% free
           </p>
         </motion.div>
